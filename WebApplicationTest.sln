@@ -3,7 +3,7 @@ Microsoft Visual Studio Solution File, Format Version 12.00
 # Visual Studio Version 17
 VisualStudioVersion = 17.2.32526.322
 MinimumVisualStudioVersion = 10.0.40219.1
-Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "WebApplicationTest", "WebApplicationTest\WebApplicationTest.csproj", "{CECD139D-1242-4D7B-A319-4E4E860F1FD2}"
+Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "WebApplicationTest.Api", "WebApplicationTest\WebApplicationTest.Api.csproj", "{CECD139D-1242-4D7B-A319-4E4E860F1FD2}"
 EndProject
 Project("{2150E333-8FDC-42A3-9474-1A3956D46DE8}") = "01-UI", "01-UI", "{508AEF0A-8DFE-4050-B2D8-9585382D549E}"
 EndProject
@@ -17,13 +17,16 @@ Project("{2150E333-8FDC-42A3-9474-1A3956D46DE8}") = "05-Util", "05-Util", "{ACD2
 EndProject
 Project("{2150E333-8FDC-42A3-9474-1A3956D46DE8}") = "99-Test", "99-Test", "{47A2C798-BE4A-4263-B6EC-DCF860F8C100}"
 EndProject
-Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "WebApplicationTest.Domain", "WebApplicationTest.Domain\WebApplicationTest.Domain.csproj", "{7097C04F-3186-4563-AB9B-B359C9ACABA1}"
+Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "WebApplicationTest.Domain", "WebApplicationTest.Domain\WebApplicationTest.Domain.csproj", "{7097C04F-3186-4563-AB9B-B359C9ACABA1}"
 EndProject
-Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "WebApplicationTest.Service", "WebApplicationTest.Service\WebApplicationTest.Service.csproj", "{023D842E-0317-4A56-99C6-FF9CE5D6E705}"
+Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "WebApplicationTest.Service", "WebApplicationTest.Service\WebApplicationTest.Service.csproj", "{023D842E-0317-4A56-99C6-FF9CE5D6E705}"
 EndProject
-Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "WebApplicationTest.Infrastructure", "WebApplicationTest.Infrastructure\WebApplicationTest.Infrastructure.csproj", "{539F44E5-F195-4999-B396-0FE739C1D3D6}"
+Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "WebApplicationTest.Infrastructure", "WebApplicationTest.Infrastructure\WebApplicationTest.Infrastructure.csproj", "{539F44E5-F195-4999-B396-0FE739C1D3D6}"
 EndProject
-Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "WebApplicationTest.Test", "WebApplicationTest.Test\WebApplicationTest.Test.csproj", "{CF81A05A-B413-4752-9577-C248B9D0ACE5}"
+Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "WebApplicationTest.Test", "WebApplicationTest.Test\WebApplicationTest.Test.csproj", "{CF81A05A-B413-4752-9577-C248B9D0ACE5}"
+	ProjectSection(ProjectDependencies) = postProject
+		{7097C04F-3186-4563-AB9B-B359C9ACABA1} = {7097C04F-3186-4563-AB9B-B359C9ACABA1}
+	EndProjectSection
 EndProject
 Global
 	GlobalSection(SolutionConfigurationPlatforms) = preSolution

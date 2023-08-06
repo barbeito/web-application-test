@@ -1,4 +1,6 @@
 using Microsoft.AspNetCore.Mvc;
+using Microsoft.Extensions.Logging;
+using System.Collections.Generic;
 using WebApplicationTest.Domain.Interfaces.Services;
 
 namespace WebApplicationTest.Controllers

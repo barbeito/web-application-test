@@ -1,3 +1,6 @@
+using Microsoft.AspNetCore.Builder;
+using Microsoft.Extensions.DependencyInjection;
+using Microsoft.Extensions.Hosting;
 using WebApplicationTest;
 
 var builder = WebApplication.CreateBuilder(args);
@@ -11,6 +14,7 @@ builder.Services.AddSwaggerGen();
 
 builder.Services.AddServices();
 builder.Services.AddRepositories();
+builder.Services.AddAutoMapper();
 
 var app = builder.Build();
 
