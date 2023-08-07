@@ -1,7 +1,6 @@
 ﻿using Microsoft.AspNetCore.Mvc;
 using Microsoft.Extensions.Logging;
 using System;
-using System.Linq;
 using System.Threading.Tasks;
 using WebApplicationTest.Domain.Interfaces.Services;
 using WebApplicationTest.Service.Models;
@@ -9,7 +8,7 @@ using WebApplicationTest.Service.Models;
 namespace WebApplicationTest.Controllers
 {
     [ApiController]
-    [Route("[controller]")]
+    [Route("client")]
     public class ClientContoller : ControllerBase
     {
         private readonly ILogger<ClientContoller> _logger;
@@ -22,17 +21,17 @@ namespace WebApplicationTest.Controllers
         }
 
         [HttpPost]
-        public async Task<IActionResult> GetAll([FromBody] ClientModel client)
+        public async Task<IActionResult> Insert([FromBody] ClientModel client)
         {
             try
             {
                 var result = await _clientService.Insert(client);
 
-                return Ok(result);
+                return Ok($"{{\"id\": {result}}}");
             }
             catch(Exception ex)
             {
-                _logger.LogError($"Error on request {nameof(GetAll)} from {nameof(ClientContoller)}. Error: {ex.Message}");
+                _logger.LogError($"Error on request {nameof(Insert)} from {nameof(ClientContoller)}. Error: {ex.Message}");
                 return Problem(ex.Message, statusCode: 500);
             }
         }

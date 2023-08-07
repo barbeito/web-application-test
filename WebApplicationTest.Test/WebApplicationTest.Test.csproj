@@ -25,6 +25,7 @@
   <ItemGroup>
     <ProjectReference Include="..\WebApplicationTest.Domain\WebApplicationTest.Domain.csproj" />
     <ProjectReference Include="..\WebApplicationTest.Service\WebApplicationTest.Service.csproj" />
+    <ProjectReference Include="..\WebApplicationTest\WebApplicationTest.Api.csproj" />
   </ItemGroup>
 
 </Project>

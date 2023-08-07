@@ -12,12 +12,12 @@ namespace WebApplicationTest
     {
         public static void AddServices(this IServiceCollection services)
         {
-            services.AddScoped<IWeatherForecastService, WeatherForecastService>();
+            services.AddScoped<IClientService, ClientService>();
         }
 
         public static void AddRepositories(this IServiceCollection services)
         {
-            services.AddScoped<IWeatherForecastRepository, WeatherForecastRepository>();
+            services.AddScoped<IClienteRepository, ClientRepository>();
         }
 
         public static void AddAutoMapper(this IServiceCollection services)

@@ -8,12 +8,7 @@ namespace WebApplicationTest.Infrastructure
 {
     public class ClientRepository : IClienteRepository
     {
-        private IList<ClientEntity> Clientes;
-
-        public ClientRepository()
-        {
-            Clientes = new List<ClientEntity>();
-        }
+        private static IList<ClientEntity> Clientes = new List<ClientEntity>();
 
         public Task<bool> Delete(ClientEntity client)
         {

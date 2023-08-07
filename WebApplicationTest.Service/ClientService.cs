@@ -1,6 +1,7 @@
 ﻿using AutoMapper;
 using System;
 using System.Linq;
+using System.Text.RegularExpressions;
 using System.Threading.Tasks;
 using WebApplicationTest.Domain.Entities;
 using WebApplicationTest.Domain.Exceptions;
@@ -35,14 +36,17 @@ namespace WebApplicationTest.Service
             if (string.IsNullOrWhiteSpace(client.Name) || client.Name.Length < 3 || InvalidName(client.Name))
                 throw new ClientException($"Property {nameof(ClientModel.Name)} is required");
 
-            if(string.IsNullOrWhiteSpace(client.Address) || client.Address.Length < 3)
+            if (string.IsNullOrWhiteSpace(client.Cpf) || client.Cpf.Length != 11)
+                throw new ClientException($"Property {nameof(ClientModel.Cpf)} is required");
+
+            if (string.IsNullOrWhiteSpace(client.Address) || client.Address.Length < 5)
                 throw new ClientException($"Property {nameof(ClientModel.Address)} is required");
 
-            if(string.IsNullOrWhiteSpace(client.Phone) || client.Phone.Length < 10)
+            if(string.IsNullOrWhiteSpace(client.Phone) || client.Phone.Length < 10 || !IsValidPhone(client.Phone))
                 throw new ClientException($"Property {nameof(ClientModel.Phone)} is required");
 
-            if (string.IsNullOrWhiteSpace(client.Email) || !EmailValid(client.Email))
-                throw new ClientException($"Property {nameof(ClientModel.Phone)} is required");
+            if (string.IsNullOrWhiteSpace(client.Email) || InvalidEmail(client.Email))
+                throw new ClientException($"Property {nameof(ClientModel.Email)} is required");
         }
 
         private bool InvalidName(string name)
@@ -50,9 +54,21 @@ namespace WebApplicationTest.Service
             return name.Any(char.IsDigit);
         }
 
-        private bool EmailValid(string email)
+        /// <summary>
+        /// Valid format phone:
+        ///     - (99) 9999-9999
+        ///     - (99) 99999-9999
+        /// </summary>
+        /// <param name="phone"></param>
+        /// <returns></returns>
+        private bool IsValidPhone(string phone)
         {
-            return !string.IsNullOrWhiteSpace(email) && email.Contains("@") && email.Contains(".com");
+            return Regex.IsMatch(phone, "^\\([0-9]{2}\\) ([0-9]{4}|[0-9]{5})-[0-9]{4}");
+        }
+
+        private bool InvalidEmail(string email)
+        {
+            return email.Contains(' ') || !(email.Contains('@') && email.Contains(".com"));
         }
     }
 }
